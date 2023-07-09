@@ -16,6 +16,6 @@ body {
   background-color: #1677ff;
 }
 
-.categories::-webkit-scrollbar{
+.categories::-webkit-scrollbar, .cart-items::-webkit-scrollbar{
   display: none;
 }
