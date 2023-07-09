@@ -26,7 +26,7 @@ function Header() {
             prefix={<SearchOutlined />}
           />
         </div>
-        <div className="menu-links flex justify-center items-center gap-x-7 fixed md:static bottom-0 md:w-auto w-full bg-white md:bg-transparent left-0 border-t md:border-t-0 p-4 md:p-0">
+        <div className="menu-links flex justify-center items-center gap-x-7 fixed md:static bottom-0 md:w-auto w-full bg-white md:bg-transparent left-0 border-t md:border-t-0 p-4 md:p-0 z-50">
           <a
             href="/"
             className="menu-link flex flex-col items-center justify-center gap-y-1 hover:text-[#40a9ff] transition-all"
@@ -73,14 +73,14 @@ function Header() {
           </a>
         </div>
         <Badge count={5} offset={[0, 6]} className="md:hidden">
-            <a
-              href="/"
-              className="menu-link flex flex-col items-center justify-center gap-y-1 hover:text-[#40a9ff] transition-all"
-            >
-              <ShoppingCartOutlined className="text-2xl" />
-              <span className="text-sm md:text-md capitalize">cart</span>
-            </a>
-          </Badge>
+          <a
+            href="/"
+            className="menu-link flex flex-col items-center justify-center gap-y-1 hover:text-[#40a9ff] transition-all"
+          >
+            <ShoppingCartOutlined className="text-2xl" />
+            <span className="text-sm md:text-md capitalize">cart</span>
+          </a>
+        </Badge>
       </header>
     </div>
   );
