@@ -1,7 +1,11 @@
 import { Table, Card, Button } from "antd";
 import Header from "../components/Header";
+import CreateInvoice from "../components/CreateInvoice";
+import { useState } from "react";
 
 const CartPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const dataSource = [
     {
       key: "1",
@@ -36,10 +40,15 @@ const CartPage = () => {
   ];
 
   return (
-    <div>
+    <>
       <Header />
       <div className="px-6">
-        <Table dataSource={dataSource} columns={columns} bordered pagination={false}/>
+        <Table
+          dataSource={dataSource}
+          columns={columns}
+          bordered
+          pagination={false}
+        />
         <div className="flex justify-end mt-4">
           <Card className="w-72">
             <div className="flex justify-between">
@@ -54,11 +63,22 @@ const CartPage = () => {
               <span className="capitalize font-semibold text-lg">subtotal</span>
               <span className="font-semibold text-lg">550.00 $</span>
             </div>
-            <Button type="primary" className="mt-4 w-full" size="large">Create Order</Button>
+            <Button
+              type="primary"
+              className="mt-4 w-full"
+              size="large"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Create Order
+            </Button>
           </Card>
         </div>
       </div>
-    </div>
+      <CreateInvoice
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
+    </>
   );
 };
 
