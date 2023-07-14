@@ -17,7 +17,7 @@ const PrintInvoice = ({ isModalOpen, setIsModalOpen }) => {
                 logo
               </h2>
             </div>
-            <div className="invoice-details grid grid-cols-4 gap-12">
+            <div className="invoice-details grid grid-cols-3 sm:grid-cols-4 gap-12">
               <div className="text-sm text-slate-500">
                 <p className="font-bold text-slate-700 capitalize">
                   invoice details
@@ -38,17 +38,19 @@ const PrintInvoice = ({ isModalOpen, setIsModalOpen }) => {
                 <p className="font-bold text-slate-700 capitalize">
                   invoice number
                 </p>
-                <p className="capitalize">fake street 123</p>
+                <p className="capitalize">00041</p>
                 <p className="capitalize text-slate-700 font-bold mt-3">
                   date of issue
                 </p>
-                <p className="uppercase">ca 1234</p>
+                <p className="uppercase">5.07.2023</p>
               </div>
               <div className="text-sm text-slate-500">
                 <p className="font-bold text-slate-700 capitalize">terms</p>
-                <p className="capitalize">fake street 123</p>
-                <p className="font-bold text-slate-700 mt-3 capitalize">due</p>
-                <p className="capitalize">00.00.00</p>
+                <p className="capitalize">10 day</p>
+                <p className="font-bold text-slate-700 mt-3 capitalize sm:block hidden">
+                  due
+                </p>
+                <p className="capitalize">14.07.2023</p>
               </div>
             </div>
             <div className="invoice-table-area mt-8">
@@ -57,31 +59,38 @@ const PrintInvoice = ({ isModalOpen, setIsModalOpen }) => {
                   <tr className="border-b border-slate-200">
                     <th
                       scope="col"
-                      className="capitalize py-3.5 pl-4 text-left text-sm font-normal text-slate-700 sm:pl-0 sm:table-cell hidden"
+                      className="capitalize py-3.5 text-left text-sm font-normal text-slate-700 sm:table-cell hidden"
                     >
                       image
                     </th>
                     <th
                       scope="col"
-                      className="capitalize py-3.5 pl-4 text-left text-sm font-normal text-slate-700 sm:pl-0 sm:table-cell hidden"
+                      className="capitalize py-3.5 text-left text-sm font-normal text-slate-700 sm:table-cell hidden"
+                    >
+                      title
+                    </th>
+                    <th
+                      colSpan={4}
+                      scope="col"
+                      className="capitalize py-3.5 text-left text-sm font-normal text-slate-700 sm:hidden"
                     >
                       title
                     </th>
                     <th
                       scope="col"
-                      className="capitalize py-3.5 pl-4 text-center text-sm font-normal text-slate-700 sm:pl-0 sm:table-cell hidden"
+                      className="capitalize py-3.5 text-center text-sm font-normal text-slate-700 sm:table-cell hidden"
                     >
                       price
                     </th>
                     <th
                       scope="col"
-                      className="capitalize py-3.5 pl-4 text-center text-sm font-normal text-slate-700 sm:pl-0 sm:table-cell hidden"
+                      className="capitalize py-3.5 text-center text-sm font-normal text-slate-700 sm:table-cell hidden"
                     >
                       quantity
                     </th>
                     <th
                       scope="col"
-                      className="capitalize py-3.5 pl-4 text-end text-sm font-normal text-slate-700 sm:pl-0 sm:table-cell hidden"
+                      className="capitalize py-3.5 text-end text-sm font-normal text-slate-700"
                     >
                       total
                     </th>
@@ -89,20 +98,33 @@ const PrintInvoice = ({ isModalOpen, setIsModalOpen }) => {
                 </thead>
                 <tbody>
                   <tr className="border-b border-slate-200">
-                    <td className="py-4">
+                    <td className="py-4 hidden sm:table-cell">
                       <img
                         src="https://picsum.photos/2000"
                         alt=""
                         className="w-16 h-16 object-cover"
                       />
                     </td>
-                    <td className="py-4">
-                      <span className="capitalize font-medium">şalgam</span>
+                    <td className="py-4 sm:table-cell hidden">
+                      <div className="flex flex-col">
+                        <span className="capitalize font-medium">cola</span>
+                        <span className="lowercase font-xs sm:hidden inline-block">
+                          2 unit at 5 ${" "}
+                        </span>
+                      </div>
                     </td>
-                    <td className="py-4 text-center">
+                    <td className="py-4 sm:hidden" colSpan={4}>
+                      <div className="flex flex-col">
+                        <span className="capitalize font-medium">cola</span>
+                        <span className="lowercase font-xs sm:hidden inline-block">
+                          2 unit at 5 ${" "}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="py-4 text-center hidden sm:table-cell">
                       <span className="font-medium">5 $</span>
                     </td>
-                    <td className="py-4 text-center">
+                    <td className="py-4 text-center hidden sm:table-cell">
                       <span className="font-medium">2</span>
                     </td>
                     <td className="py-4 text-end">
@@ -113,7 +135,7 @@ const PrintInvoice = ({ isModalOpen, setIsModalOpen }) => {
                 <tfoot>
                   <tr>
                     <th
-                      className="capitalize text-right pt-6"
+                      className="capitalize text-right pt-4 sm:table-cell hidden"
                       colSpan={4}
                       scope="row"
                     >
@@ -122,7 +144,16 @@ const PrintInvoice = ({ isModalOpen, setIsModalOpen }) => {
                       </span>
                     </th>
                     <th
-                      className="uppercase text-right pt-6"
+                      className="capitalize text-left pt-4 sm:hidden"
+                      colSpan={4}
+                      scope="row"
+                    >
+                      <span className="font-normal text-slate-700">
+                        subtotal
+                      </span>
+                    </th>
+                    <th
+                      className="uppercase text-right pt-4"
                       colSpan={4}
                       scope="row"
                     >
@@ -131,11 +162,18 @@ const PrintInvoice = ({ isModalOpen, setIsModalOpen }) => {
                   </tr>
                   <tr>
                     <th
-                      className="uppercase text-right pt-4"
+                      className="uppercase text-right pt-4 sm:table-cell hidden"
                       colSpan={4}
                       scope="row"
                     >
-                      <span className="font-normal text-red-700">kdv</span>
+                      <span className="font-normal text-slate-700">kdv</span>
+                    </th>
+                    <th
+                      className="uppercase text-left pt-4 sm:hidden"
+                      colSpan={4}
+                      scope="row"
+                    >
+                      <span className="font-normal text-slate-700">kdv</span>
                     </th>
                     <th
                       className="uppercase text-right pt-4"
@@ -147,7 +185,14 @@ const PrintInvoice = ({ isModalOpen, setIsModalOpen }) => {
                   </tr>
                   <tr>
                     <th
-                      className="uppercase text-right pt-4"
+                      className="uppercase text-right pt-4 sm:table-cell hidden"
+                      colSpan={4}
+                      scope="row"
+                    >
+                      <span className="font-bold text-slate-700">total</span>
+                    </th>
+                    <th
+                      className="uppercase text-left pt-4 sm:hidden"
                       colSpan={4}
                       scope="row"
                     >
