@@ -52,7 +52,7 @@ function Header() {
             <span className="text-sm md:text-md capitalize">invoices</span>
           </Link>
           <Link
-            to="/"
+            to="/customers"
             className="menu-link flex flex-col items-center justify-center gap-y-1 hover:text-[#40a9ff] transition-all"
           >
             <UserOutlined className="text-md md:text-2xl " />
