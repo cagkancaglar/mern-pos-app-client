@@ -45,7 +45,7 @@ function Header() {
             </Link>
           </Badge>
           <Link
-            to="/"
+            to="/invoices"
             className="menu-link flex flex-col items-center justify-center gap-y-1 hover:text-[#40a9ff] transition-all"
           >
             <CopyOutlined className="text-md md:text-2xl " />
