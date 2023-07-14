@@ -59,7 +59,7 @@ function Header() {
             <span className="text-sm md:text-md capitalize">customers</span>
           </Link>
           <Link
-            to="/"
+            to="/statistics"
             className="menu-link flex flex-col items-center justify-center gap-y-1 hover:text-[#40a9ff] transition-all"
           >
             <BarChartOutlined className="text-md md:text-2xl " />
