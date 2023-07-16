@@ -2,7 +2,6 @@ import { Button, Form, Input, Carousel } from "antd";
 import { Link } from "react-router-dom";
 import AuthCarousel from "../auth/AuthCarousel";
 
-
 const Register = () => {
   return (
     <div className="h-screen">
@@ -11,12 +10,12 @@ const Register = () => {
           <h1 className="text-center text-5xl font-bold mb-2">LOGO</h1>
           <Form layout="vertical">
             <Form.Item
-              label="Kullanıcı Adı"
+              label="Username"
               name={"username"}
               rules={[
                 {
                   required: true,
-                  message: "Kullanıcı Adı Alanı Boş Bırakılamaz!",
+                  message: "Username field cannot be blank!",
                 },
               ]}
             >
@@ -28,32 +27,45 @@ const Register = () => {
               rules={[
                 {
                   required: true,
-                  message: "E-mail Alanı Boş Bırakılamaz!",
+                  message: "E-mail field cannot be blank!",
                 },
               ]}
             >
               <Input />
             </Form.Item>
             <Form.Item
-              label="Şifre"
+              label="Password"
               name={"password"}
               rules={[
                 {
                   required: true,
-                  message: "Şifre Alanı Boş Bırakılamaz!",
+                  message: "Password field cannot be blank!",
                 },
               ]}
             >
               <Input.Password />
             </Form.Item>
             <Form.Item
-              label="Şifre Tekrar"
+              label="RePassword"
               name={"passwordAgain"}
+              dependencies={["password"]}
               rules={[
                 {
                   required: true,
-                  message: "Şifre Tekrar Alanı Boş Bırakılamaz!",
+                  message: "RePassword field cannot be blank!",
                 },
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    if (!value || getFieldValue("password") === value) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(
+                      new Error(
+                        "The new password that you entered do not match!"
+                      )
+                    );
+                  },
+                }),
               ]}
             >
               <Input.Password />
@@ -65,7 +77,7 @@ const Register = () => {
                 className="w-full"
                 size="large"
               >
-                Kaydol
+                Register
               </Button>
             </Form.Item>
           </Form>
