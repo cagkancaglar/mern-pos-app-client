@@ -30,7 +30,7 @@ const EditCategory = ({
     {
       title: "Action",
       dataIndex: "action",
-      render: (text, record) => {
+      render: (_, record) => {
         return (
           <div>
             <Button
@@ -43,7 +43,11 @@ const EditCategory = ({
             <Button type="link" htmlType="submit" className="text-gray-500">
               Save
             </Button>
-            <Button type="link" danger>
+            <Button
+              type="link"
+              danger
+              onClick={() => handleCategoryDelete(record._id)}
+            >
               Delete
             </Button>
           </div>
@@ -52,7 +56,25 @@ const EditCategory = ({
     },
   ];
 
+  const handleCategoryDelete = (id) => {
+    console.log(id);
+
+    try {
+      fetch("http://localhost:5000/api/categories/delete-category", {
+        method: "DELETE",
+        body: JSON.stringify({ id: id }),
+        headers: { "Content-Type": "application/json charset=UTF-8" },
+      });
+      message.success("category deleted successfully");
+      setCategories(categories.filter((category) => category._id !== id));
+    } catch (err) {
+      message.error(err);
+      console.log(err);
+    }
+  };
+
   const onFinish = (values) => {
+    console.log(values);
     try {
       fetch("http://localhost:5000/api/categories/update-category", {
         method: "PUT",
@@ -75,7 +97,7 @@ const EditCategory = ({
         })
       );
     } catch (err) {
-      message.success("Error: " + err.message);
+      message.error(err);
       console.log(err);
     }
   };
