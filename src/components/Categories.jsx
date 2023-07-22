@@ -2,10 +2,10 @@ import { PlusOutlined } from "@ant-design/icons";
 import { Form, Modal, Input, Button, message } from "antd";
 import { useState } from "react";
 
-const Categories = () => {
+const Categories = ({ categories, setCategories }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [form] = Form.useForm();
 
+  const [form] = Form.useForm();
 
   const onFinish = (values) => {
     try {
@@ -18,6 +18,7 @@ const Categories = () => {
       });
       message.success("category added successfully");
       form.resetFields();
+      setCategories([...categories, values]);
     } catch (err) {
       console.log(err);
     }
@@ -25,57 +26,11 @@ const Categories = () => {
 
   return (
     <ul className="flex md:flex-col gap-4 ">
-      <li className="category-item">
-        <span className="capitalize">all</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">food</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
-      <li className="category-item">
-        <span className="capitalize">drink</span>
-      </li>
+      {categories.map((category, index) => (
+        <li className="category-item" key={index}>
+          <span className="capitalize">{category.title}</span>
+        </li>
+      ))}
       <li
         className="category-item !bg-purple-800 hover:!opacity-90"
         onClick={() => setIsAddModalOpen(true)}
@@ -88,7 +43,7 @@ const Categories = () => {
         onCancel={() => setIsAddModalOpen(false)}
         footer={false}
       >
-        <Form layout="vertical" onFinish={onFinish} form={form} >
+        <Form layout="vertical" onFinish={onFinish} form={form}>
           <Form.Item
             label="Add Category"
             name="title"
