@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { PlusOutlined, EditOutlined } from "@ant-design/icons";
+import AddProduct from "./AddProduct";
 
-const Products = () => {
+const Products = ({ categories }) => {
   const [products, setProducts] = useState([]);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const getProducts = async () => {
     try {
@@ -38,12 +40,22 @@ const Products = () => {
           </div>
         </div>
       ))}
-      <div className="product-item flex justify-center items-center border bg-purple-800 hover:shadow-md cursor-pointer transition-all select-none hover:opacity-90">
+      <div
+        className="product-item flex justify-center items-center border bg-purple-800 hover:shadow-md cursor-pointer transition-all select-none hover:opacity-90"
+        onClick={() => setIsAddModalOpen(true)}
+      >
         <PlusOutlined className="text-white md:text-2xl" />
       </div>
       <div className="product-item flex justify-center items-center border bg-orange-800 hover:shadow-md cursor-pointer transition-all select-none hover:opacity-90">
         <EditOutlined className="text-white md:text-2xl" />
       </div>
+      <AddProduct
+        isAddModalOpen={isAddModalOpen}
+        setIsAddModalOpen={setIsAddModalOpen}
+        categories={categories}
+        products={products}
+        setProducts={setProducts}
+      />
     </div>
   );
 };
