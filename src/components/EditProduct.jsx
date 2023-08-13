@@ -102,16 +102,14 @@ const EditProduct = () => {
   ];
 
   const handleCategoryDelete = (id) => {
-    console.log(id);
-
     try {
-      fetch("http://localhost:5000/api/categories/delete-category", {
+      fetch("http://localhost:5000/api/products/delete-product", {
         method: "DELETE",
         body: JSON.stringify({ id: id }),
         headers: { "Content-Type": "application/json charset=UTF-8" },
       });
-      message.success("category deleted successfully");
-      setCategories(categories.filter((category) => category._id !== id));
+      message.success("product deleted successfully");
+      setProducts(products.filter((product) => product._id !== id));
     } catch (err) {
       message.error(err);
       console.log(err);
