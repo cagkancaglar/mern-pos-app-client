@@ -21,8 +21,23 @@ const cartSlice = createSlice({
         };
       }
     },
+    deleteProduct: (state, action) => {
+      const findProduct = state.cartItems.find(
+        (item) => item._id === action.payload._id
+      );
+      if (findProduct.quantity > 1) {
+        findProduct.quantity -= 1;
+      } else {
+        return {
+          ...state,
+          cartItems: state.cartItems.filter(
+            (item) => item._id !== action.payload._id
+          ),
+        };
+      }
+    },
   },
 });
 
-export const { addProduct } = cartSlice.actions;
+export const { addProduct, deleteProduct } = cartSlice.actions;
 export default cartSlice.reducer;

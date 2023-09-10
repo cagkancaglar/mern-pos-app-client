@@ -4,10 +4,17 @@ import {
   PlusCircleOutlined,
   MinusCircleOutlined,
 } from "@ant-design/icons";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { deleteProduct } from "../../store/cartSlice";
 
 const CartTotals = () => {
   const { cartItems } = useSelector((state) => state.cart);
+
+  const dispatch = useDispatch();
+
+  const handleDelete = (item) => {
+    dispatch(deleteProduct(item));
+  };
 
   return (
     <div className="cart flex flex-col h-full max-h-[calc(100vh_-_90px)]">
@@ -41,8 +48,11 @@ const CartTotals = () => {
                   danger
                   className="w-full capitalize flex justify-center items-center !rounded-full"
                   icon={<MinusCircleOutlined />}
+                  onClick={() => handleDelete(item)}
                 />
-                <span className="font-semibold select-none">{item.quantity}</span>
+                <span className="font-semibold select-none">
+                  {item.quantity}
+                </span>
                 <Button
                   type="primary"
                   size="medium"
