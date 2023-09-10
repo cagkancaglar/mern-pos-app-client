@@ -1,7 +1,7 @@
-import Header from "../components/Header";
-import Categories from "../components/Categories";
-import Products from "../components/Products";
-import CartTotals from "../components/CartTotals";
+import Header from "../components/header/Header";
+import Categories from "../components/categories/Categories";
+import Products from "../components/products/Products";
+import CartTotals from "../components/cart/CartTotals";
 import { useState, useEffect } from "react";
 
 const HomePage = () => {

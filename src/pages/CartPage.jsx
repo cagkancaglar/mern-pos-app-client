@@ -1,6 +1,6 @@
 import { Table, Card, Button } from "antd";
-import Header from "../components/Header";
-import CreateInvoice from "../components/CreateInvoice";
+import Header from "../components/header/Header";
+import CreateInvoice from "../components/invoices/CreateInvoice";
 import { useState } from "react";
 
 const CartPage = () => {

@@ -1,7 +1,7 @@
-import Header from "../components/Header";
-import StatisticCard from "../components/StatisticCard";
+import Header from "../components/header/Header";
+import StatisticCard from "../components/statistics/StatisticCard";
 import { Area, Pie } from "@ant-design/plots";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const StatisticsPage = () => {
   const [data, setData] = useState([]);

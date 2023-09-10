@@ -1,5 +1,5 @@
 import { Table } from "antd";
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 
 const CustomerPage = () => {
 
