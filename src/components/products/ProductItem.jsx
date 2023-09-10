@@ -5,7 +5,7 @@ const ProductItem = ({ product }) => {
   const dispatch = useDispatch();
 
   const handleClick = (product) => {
-    dispatch(addProduct(product));
+    dispatch(addProduct({ ...product, quantity: 1 }));
   };
 
   return (

@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 function Header() {
   const { cartItems } = useSelector((state) => state.cart);
 
-  console.log(cartItems.length);
+  console.log(cartItems);
 
   return (
     <div className="border-b mb-6">

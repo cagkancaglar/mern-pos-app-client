@@ -4,362 +4,54 @@ import {
   PlusCircleOutlined,
   MinusCircleOutlined,
 } from "@ant-design/icons";
+import { useSelector } from "react-redux";
 
 const CartTotals = () => {
+  const { cartItems } = useSelector((state) => state.cart);
+
   return (
     <div className="cart flex flex-col h-full max-h-[calc(100vh_-_90px)]">
       <h2 className="bg-blue-600 text-center py-4 text-white tracking-wide">
         Products in Basket
       </h2>
       <ul className="cart-items px-2 flex flex-col gap-y-3 py-2 overflow-y-auto">
-        <li className="cart-item capitalize flex justify-between select-none">
-          <div className="flex items-center gap-x-3">
-            <img
-              src="https://picsum.photos/2000"
-              alt=""
-              className="w-16 h-16 object-cover"
-            />
-            <div className="flex flex-col">
-              <b>Apple</b>
-              <span>5$ x 2</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-x-3">
-            <Button
-              type="primary"
-              size="medium"
-              danger
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<MinusCircleOutlined />}
-            />
-            <span className="font-semibold select-none">2</span>
-            <Button
-              type="primary"
-              size="medium"
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<PlusCircleOutlined />}
-            />
-          </div>
-        </li>
-        <li className="cart-item capitalize flex justify-between select-none">
-          <div className="flex items-center gap-x-3">
-            <img
-              src="https://picsum.photos/2000"
-              alt=""
-              className="w-16 h-16 object-cover"
-            />
-            <div className="flex flex-col">
-              <b>Apple</b>
-              <span>5$ x 2</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-x-3">
-            <Button
-              type="primary"
-              size="medium"
-              danger
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<MinusCircleOutlined />}
-            />
-            <span className="font-semibold select-none">2</span>
-            <Button
-              type="primary"
-              size="medium"
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<PlusCircleOutlined />}
-            />
-          </div>
-        </li>
-        <li className="cart-item capitalize flex justify-between select-none">
-          <div className="flex items-center gap-x-3">
-            <img
-              src="https://picsum.photos/2000"
-              alt=""
-              className="w-16 h-16 object-cover"
-            />
-            <div className="flex flex-col">
-              <b>Apple</b>
-              <span>5$ x 2</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-x-3">
-            <Button
-              type="primary"
-              size="medium"
-              danger
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<MinusCircleOutlined />}
-            />
-            <span className="font-semibold select-none">2</span>
-            <Button
-              type="primary"
-              size="medium"
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<PlusCircleOutlined />}
-            />
-          </div>
-        </li>
-        <li className="cart-item capitalize flex justify-between select-none">
-          <div className="flex items-center gap-x-3">
-            <img
-              src="https://picsum.photos/2000"
-              alt=""
-              className="w-16 h-16 object-cover"
-            />
-            <div className="flex flex-col">
-              <b>Apple</b>
-              <span>5$ x 2</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-x-3">
-            <Button
-              type="primary"
-              size="medium"
-              danger
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<MinusCircleOutlined />}
-            />
-            <span className="font-semibold select-none">2</span>
-            <Button
-              type="primary"
-              size="medium"
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<PlusCircleOutlined />}
-            />
-          </div>
-        </li>
-        <li className="cart-item capitalize flex justify-between select-none">
-          <div className="flex items-center gap-x-3">
-            <img
-              src="https://picsum.photos/2000"
-              alt=""
-              className="w-16 h-16 object-cover"
-            />
-            <div className="flex flex-col">
-              <b>Apple</b>
-              <span>5$ x 2</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-x-3">
-            <Button
-              type="primary"
-              size="medium"
-              danger
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<MinusCircleOutlined />}
-            />
-            <span className="font-semibold select-none">2</span>
-            <Button
-              type="primary"
-              size="medium"
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<PlusCircleOutlined />}
-            />
-          </div>
-        </li>
-        <li className="cart-item capitalize flex justify-between select-none">
-          <div className="flex items-center gap-x-3">
-            <img
-              src="https://picsum.photos/2000"
-              alt=""
-              className="w-16 h-16 object-cover"
-            />
-            <div className="flex flex-col">
-              <b>Apple</b>
-              <span>5$ x 2</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-x-3">
-            <Button
-              type="primary"
-              size="medium"
-              danger
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<MinusCircleOutlined />}
-            />
-            <span className="font-semibold select-none">2</span>
-            <Button
-              type="primary"
-              size="medium"
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<PlusCircleOutlined />}
-            />
-          </div>
-        </li>
-        <li className="cart-item capitalize flex justify-between select-none">
-          <div className="flex items-center gap-x-3">
-            <img
-              src="https://picsum.photos/2000"
-              alt=""
-              className="w-16 h-16 object-cover"
-            />
-            <div className="flex flex-col">
-              <b>Apple</b>
-              <span>5$ x 2</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-x-3">
-            <Button
-              type="primary"
-              size="medium"
-              danger
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<MinusCircleOutlined />}
-            />
-            <span className="font-semibold select-none">2</span>
-            <Button
-              type="primary"
-              size="medium"
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<PlusCircleOutlined />}
-            />
-          </div>
-        </li>
-        <li className="cart-item capitalize flex justify-between select-none">
-          <div className="flex items-center gap-x-3">
-            <img
-              src="https://picsum.photos/2000"
-              alt=""
-              className="w-16 h-16 object-cover"
-            />
-            <div className="flex flex-col">
-              <b>Apple</b>
-              <span>5$ x 2</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-x-3">
-            <Button
-              type="primary"
-              size="medium"
-              danger
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<MinusCircleOutlined />}
-            />
-            <span className="font-semibold select-none">2</span>
-            <Button
-              type="primary"
-              size="medium"
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<PlusCircleOutlined />}
-            />
-          </div>
-        </li>
-        <li className="cart-item capitalize flex justify-between select-none">
-          <div className="flex items-center gap-x-3">
-            <img
-              src="https://picsum.photos/2000"
-              alt=""
-              className="w-16 h-16 object-cover"
-            />
-            <div className="flex flex-col">
-              <b>Apple</b>
-              <span>5$ x 2</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-x-3">
-            <Button
-              type="primary"
-              size="medium"
-              danger
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<MinusCircleOutlined />}
-            />
-            <span className="font-semibold select-none">2</span>
-            <Button
-              type="primary"
-              size="medium"
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<PlusCircleOutlined />}
-            />
-          </div>
-        </li>
-        <li className="cart-item capitalize flex justify-between select-none">
-          <div className="flex items-center gap-x-3">
-            <img
-              src="https://picsum.photos/2000"
-              alt=""
-              className="w-16 h-16 object-cover"
-            />
-            <div className="flex flex-col">
-              <b>Apple</b>
-              <span>5$ x 2</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-x-3">
-            <Button
-              type="primary"
-              size="medium"
-              danger
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<MinusCircleOutlined />}
-            />
-            <span className="font-semibold select-none">2</span>
-            <Button
-              type="primary"
-              size="medium"
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<PlusCircleOutlined />}
-            />
-          </div>
-        </li>
-        <li className="cart-item capitalize flex justify-between select-none">
-          <div className="flex items-center gap-x-3">
-            <img
-              src="https://picsum.photos/2000"
-              alt=""
-              className="w-16 h-16 object-cover"
-            />
-            <div className="flex flex-col">
-              <b>Apple</b>
-              <span>5$ x 2</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-x-3">
-            <Button
-              type="primary"
-              size="medium"
-              danger
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<MinusCircleOutlined />}
-            />
-            <span className="font-semibold select-none">2</span>
-            <Button
-              type="primary"
-              size="medium"
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<PlusCircleOutlined />}
-            />
-          </div>
-        </li>
-        <li className="cart-item capitalize flex justify-between select-none">
-          <div className="flex items-center gap-x-3">
-            <img
-              src="https://picsum.photos/2000"
-              alt=""
-              className="w-16 h-16 object-cover"
-            />
-            <div className="flex flex-col">
-              <b>Apple</b>
-              <span>5$ x 2</span>
-            </div>
-          </div>
-          <div className="flex items-center gap-x-3">
-            <Button
-              type="primary"
-              size="medium"
-              danger
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<MinusCircleOutlined />}
-            />
-            <span className="font-semibold select-none">2</span>
-            <Button
-              type="primary"
-              size="medium"
-              className="w-full capitalize flex justify-center items-center !rounded-full"
-              icon={<PlusCircleOutlined />}
-            />
-          </div>
-        </li>
+        {cartItems &&
+          cartItems.map((item, index) => (
+            <li
+              className="cart-item capitalize flex justify-between select-none"
+              key={index}
+            >
+              <div className="flex items-center gap-x-3">
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="w-16 h-16 object-cover"
+                />
+                <div className="flex flex-col">
+                  <b>{item.title}</b>
+                  <span>
+                    {item.price}$ x {item.quantity}{" "}
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center gap-x-3">
+                <Button
+                  type="primary"
+                  size="medium"
+                  danger
+                  className="w-full capitalize flex justify-center items-center !rounded-full"
+                  icon={<MinusCircleOutlined />}
+                />
+                <span className="font-semibold select-none">{item.quantity}</span>
+                <Button
+                  type="primary"
+                  size="medium"
+                  className="w-full capitalize flex justify-center items-center !rounded-full"
+                  icon={<PlusCircleOutlined />}
+                />
+              </div>
+            </li>
+          ))}
       </ul>
       <div className="cart-totals mt-auto">
         <div className="border-t border-b">
