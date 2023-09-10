@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteProduct } from "../../store/cartSlice";
 
 const CartTotals = () => {
-  const { cartItems } = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
 
@@ -22,8 +22,8 @@ const CartTotals = () => {
         Products in Basket
       </h2>
       <ul className="cart-items px-2 flex flex-col gap-y-3 py-2 overflow-y-auto">
-        {cartItems &&
-          cartItems.map((item, index) => (
+        {cart.cartItems &&
+          cart.cartItems.map((item, index) => (
             <li
               className="cart-item capitalize flex justify-between select-none"
               key={index}
@@ -67,17 +67,29 @@ const CartTotals = () => {
         <div className="border-t border-b">
           <div className="flex justify-between p-2">
             <span className="font-medium capitalize">subtotals</span>
-            <span className="font-medium">20 $</span>
+            <span className="font-medium">
+              {cart.total > 0 ? cart.total.toFixed(2) : 0} $
+            </span>
           </div>
           <div className="flex justify-between p-2">
-            <span className="font-medium uppercase">kdv %8</span>
-            <span className="font-medium text-red-600">4 $</span>
+            <span className="font-medium uppercase">kdv %{cart.tax}</span>
+            <span className="font-medium text-red-600">
+              {(cart.total * cart.tax) / 100 > 0
+                ? ((cart.total * cart.tax) / 100).toFixed(2)
+                : 0}{" "}
+              $
+            </span>
           </div>
         </div>
         <div className="border-b mt-4">
           <div className="flex justify-between p-2 mt-4">
             <span className="font-bold uppercase text-xl">total</span>
-            <span className="font-bold text-xl">24 $</span>
+            <span className="font-bold text-xl">
+              {cart.total + (cart.total * cart.tax) / 100 > 0
+                ? (cart.total + (cart.total * cart.tax) / 100).toFixed(2)
+                : 0}{" "}
+              $
+            </span>
           </div>
         </div>
         <div className="flex flex-col gap-y-2 py-4 px-2">
