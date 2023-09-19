@@ -14,13 +14,14 @@ const cartSlice = createSlice({
       );
       if (findProduct) {
         findProduct.quantity += 1;
+        state.total += parseInt(action.payload.price);
       } else {
         return {
           ...state,
           cartItems: [...state.cartItems, action.payload],
+          total: state.total + action.payload.price,
         };
       }
-      state.total += action.payload.price;
     },
     deleteProduct: (state, action) => {
       const findProduct = state.cartItems.find(

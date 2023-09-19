@@ -5,7 +5,7 @@ import {
   MinusCircleOutlined,
 } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteProduct } from "../../store/cartSlice";
+import { addProduct, deleteProduct } from "../../store/cartSlice";
 
 const CartTotals = () => {
   const cart = useSelector((state) => state.cart);
@@ -16,13 +16,17 @@ const CartTotals = () => {
     dispatch(deleteProduct(item));
   };
 
+  const handleAdd = (item) => {
+    dispatch(addProduct(item));
+  };
+
   return (
     <div className="cart flex flex-col h-full max-h-[calc(100vh_-_90px)]">
       <h2 className="bg-blue-600 text-center py-4 text-white tracking-wide">
         Products in Basket
       </h2>
       <ul className="cart-items px-2 flex flex-col gap-y-3 py-2 overflow-y-auto">
-        {cart.cartItems &&
+        {cart.cartItems.length > 0 ? (
           cart.cartItems.map((item, index) => (
             <li
               className="cart-item capitalize flex justify-between select-none"
@@ -41,16 +45,24 @@ const CartTotals = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex items-center gap-x-3">
+              <div className="flex items-center gap-x-1.5">
                 <Button
                   type="primary"
                   size="medium"
                   danger
                   className="w-full capitalize flex justify-center items-center !rounded-full"
                   icon={<MinusCircleOutlined />}
-                  onClick={() => handleDelete(item)}
+                  onClick={() => {
+                    if (item.quantity === 1) {
+                      if (window.confirm("Delete product?")) {
+                        handleDelete(item);
+                      }
+                    } else {
+                      handleDelete(item);
+                    }
+                  }}
                 />
-                <span className="font-semibold select-none">
+                <span className="font-semibold select-none w-6 text-center">
                   {item.quantity}
                 </span>
                 <Button
@@ -58,10 +70,16 @@ const CartTotals = () => {
                   size="medium"
                   className="w-full capitalize flex justify-center items-center !rounded-full"
                   icon={<PlusCircleOutlined />}
+                  onClick={() => handleAdd(item)}
                 />
               </div>
             </li>
-          ))}
+          ))
+        ) : (
+          <h3 className="text-yellow-600 font-semibold text-center">
+            Your cart is empty...
+          </h3>
+        )}
       </ul>
       <div className="cart-totals mt-auto">
         <div className="border-t border-b">
